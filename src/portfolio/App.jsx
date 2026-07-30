@@ -1,15 +1,17 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, lazy, Suspense } from 'react';
 import { gsap } from 'gsap';
 import { FaCode, FaGlobe, FaGithub } from 'react-icons/fa';
 import { FaRegUser } from "react-icons/fa6";
 import './portfolio.css';
 import { motion } from "framer-motion";
 import Navbar from '../nav-component/Navbar';
-import MainContent from '../main-content/main-content';
-import About from '../about/About';
-import Showcase from '../showcase/Showcase';
-import Contact from '../ContactMe/contact';
-import Footer from '../footer/Footer';
+
+// Lazy load components for better performance (Code Splitting)
+const MainContent = lazy(() => import('../main-content/main-content'));
+const About = lazy(() => import('../about/About'));
+const Showcase = lazy(() => import('../showcase/Showcase'));
+const Contact = lazy(() => import('../ContactMe/contact'));
+const Footer = lazy(() => import('../footer/Footer'));
 
 const iconVariants = {
   hidden: { y: -70, opacity: 0 },
@@ -285,11 +287,13 @@ function App() {
       {showNavbar && (
         <>
           <Navbar />
-          <MainContent />
-          <About />
-          <Showcase />
-          <Contact />
-          <Footer />
+          <Suspense fallback={<div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', color: '#fff' }}>Loading content...</div>}>
+            <MainContent />
+            <About />
+            <Showcase />
+            <Contact />
+            <Footer />
+          </Suspense>
         </>
       )}
     </div>

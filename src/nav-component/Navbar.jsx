@@ -134,7 +134,7 @@ const Navbar = () => {
           }}
           whileTap={{ scale: 0.9 }}
         >
-          <span className="logo-text">Ellol</span>
+          <span className="logo-text">zlolcodin</span>
         </motion.a>
         
         <button 

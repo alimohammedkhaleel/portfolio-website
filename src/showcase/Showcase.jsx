@@ -502,9 +502,16 @@ function Showcase() {
           )}
 
           {activeTab === 'certificates' && (
-            <div className="certificates-wrapper">
-              <div className="certificate-card" style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                <img src={certSef} alt="SEF Academy Certificate" style={{ width: '100%', borderRadius: '10px' }} />
+            <motion.div 
+              className="certificates-wrapper"
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+            >
+              <motion.div variants={itemVariants} className="certificate-card">
+                <div className="cert-image-wrapper">
+                  <img src={certSef} alt="SEF Academy Certificate" className="certificate-image" loading="lazy" />
+                </div>
                 <div className="cert-info">
                   <h3>Front-end web development Diploma (React JS)</h3>
                   <p className="cert-issuer">SEF Academy</p>
@@ -512,10 +519,12 @@ function Showcase() {
                     <span className="cert-status"><FaCheckCircle /> Verified Certificate</span>
                   </div>
                 </div>
-              </div>
+              </motion.div>
 
-              <div className="certificate-card" style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginTop: '2rem' }}>
-                <img src={certWe} alt="WE Certificate" style={{ width: '100%', borderRadius: '10px' }} />
+              <motion.div variants={itemVariants} className="certificate-card">
+                <div className="cert-image-wrapper">
+                  <img src={certWe} alt="WE Certificate" className="certificate-image" loading="lazy" />
+                </div>
                 <div className="cert-info">
                   <h3>Theoretical &amp; Practical and on job training Field</h3>
                   <p className="cert-issuer">WE</p>
@@ -523,8 +532,21 @@ function Showcase() {
                     <span className="cert-status"><FaCheckCircle /> Verified Certificate</span>
                   </div>
                 </div>
-              </div>
-            </div>
+              </motion.div>
+
+              <motion.div variants={itemVariants} className="certificate-card">
+                <div className="cert-icon-wrapper" style={{ width: '100%', height: '220px', borderRadius: '12px', margin: '0', background: 'linear-gradient(135deg, #7a5af8 0%, #a239ea 100%)' }}>
+                  <FaGraduationCap className="cert-icon" style={{ fontSize: '4rem' }} />
+                </div>
+                <div className="cert-info">
+                  <h3>Fullstack React &amp; Modern Web Development</h3>
+                  <p className="cert-issuer">New Cairo Technological University</p>
+                  <div className="cert-meta">
+                    <span className="cert-status"><FaCheckCircle /> Verified Certificate</span>
+                  </div>
+                </div>
+              </motion.div>
+            </motion.div>
           )}
         </motion.div>
       </AnimatePresence>
