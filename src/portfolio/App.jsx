@@ -232,7 +232,7 @@ const Portfolio = () => {
               <FaGlobe className="globe-iconnn" />
               {showText && (
                 <span className="typewriter">
-                  www.el.my.id
+                  zlolcoding.vercel.app
                 </span>
               )}
             </motion.a>

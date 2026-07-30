@@ -12,53 +12,64 @@ const Navbar = () => {
   const navbarRef = useRef(null);
   const scrollTimeoutRef = useRef(null);
   const sectionObserverRef = useRef(null);
+  const mutationObserverRef = useRef(null);
+  const observedSectionsRef = useRef(new Set());
+
+  const SECTION_IDS = ['home', 'about', 'pricing', 'contact'];
+
+  // Function to observe a section if not already observed
+  const observeSection = (id) => {
+    if (observedSectionsRef.current.has(id)) return;
+    const el = document.getElementById(id);
+    if (el && sectionObserverRef.current) {
+      sectionObserverRef.current.observe(el);
+      observedSectionsRef.current.add(id);
+    }
+  };
 
   useEffect(() => {
     // تحديد الصفحة الحالية عند التحميل
     const currentHash = window.location.hash.replace('#', '');
-    if (currentHash && ['home', 'about', 'pricing', 'contact'].includes(currentHash)) {
+    if (currentHash && SECTION_IDS.includes(currentHash)) {
       setActiveLink(currentHash);
     }
 
-    // تهيئة Intersection Observer لمراقبة الأقسام
-    const observerOptions = {
-      root: null,
-      rootMargin: '-100px 0px -50% 0px', // يمكن تعديل هذه القيم حسب الحاجة
-      threshold: 0
-    };
-
+    // تهيئة Intersection Observer
     sectionObserverRef.current = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           setActiveLink(entry.target.id);
-          // تحديث عنوان URL بدون إعادة تحميل الصفحة
           window.history.replaceState(null, '', `#${entry.target.id}`);
         }
       });
-    }, observerOptions);
-
-    // مراقبة جميع الأقسام
-    const sections = ['home', 'about', 'pricing', 'contact']
-      .map(id => document.getElementById(id))
-      .filter(Boolean);
-
-    sections.forEach(section => {
-      if (section) sectionObserverRef.current.observe(section);
+    }, {
+      root: null,
+      rootMargin: '-80px 0px -40% 0px',
+      threshold: 0
     });
 
-    // تأثيرات التمرير للـ navbar
+    // Observe any sections already in DOM
+    SECTION_IDS.forEach(observeSection);
+
+    // Watch for new sections being added to the DOM (lazy-loaded)
+    mutationObserverRef.current = new MutationObserver(() => {
+      SECTION_IDS.forEach(observeSection);
+    });
+    mutationObserverRef.current.observe(document.body, { childList: true, subtree: true });
+
+    // Scroll behavior for navbar hide/show
     let lastScrollY = window.pageYOffset;
     const SCROLL_THRESHOLD = 100;
-    const SCROLL_DELAY = 300;
+    const SCROLL_DELAY = 200;
 
     const handleScroll = () => {
       const currentScrollY = window.pageYOffset;
       setIsScrolled(currentScrollY > 50);
-      
+
       if (scrollTimeoutRef.current) {
         clearTimeout(scrollTimeoutRef.current);
       }
-      
+
       scrollTimeoutRef.current = setTimeout(() => {
         if (currentScrollY > lastScrollY && currentScrollY > SCROLL_THRESHOLD) {
           setIsCollapsed(true);
@@ -73,14 +84,9 @@ const Navbar = () => {
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      if (scrollTimeoutRef.current) {
-        clearTimeout(scrollTimeoutRef.current);
-      }
-      if (sectionObserverRef.current) {
-        sections.forEach(section => {
-          if (section) sectionObserverRef.current.unobserve(section);
-        });
-      }
+      if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
+      if (sectionObserverRef.current) sectionObserverRef.current.disconnect();
+      if (mutationObserverRef.current) mutationObserverRef.current.disconnect();
     };
   }, []);
 
@@ -103,15 +109,12 @@ const Navbar = () => {
     e.preventDefault();
     setActiveLink(linkName);
     setIsMenuOpen(false);
-    
+
     const element = document.getElementById(linkName);
     if (element) {
-      element.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-      
-      // تحديث عنوان URL
+      const navbarHeight = navbarRef.current ? navbarRef.current.offsetHeight : 70;
+      const elementTop = element.getBoundingClientRect().top + window.pageYOffset - navbarHeight - 10;
+      window.scrollTo({ top: elementTop, behavior: 'smooth' });
       window.history.pushState(null, '', `#${linkName}`);
     }
   };
@@ -134,7 +137,7 @@ const Navbar = () => {
           }}
           whileTap={{ scale: 0.9 }}
         >
-          <span className="logo-text">zlolcodin</span>
+          <span className="logo-text">zlolcoding</span>
         </motion.a>
         
         <button 

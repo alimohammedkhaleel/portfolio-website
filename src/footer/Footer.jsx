@@ -49,7 +49,7 @@ const Footer = () => {
           
           {/* Col 1: Brand & Developer Info */}
           <motion.div className="footer-col brand-col" variants={itemVariants}>
-            <h3 className="footer-brand-title">ZLOLCODIN <span className="highlight-purple">PORTFOLIO</span></h3>
+            <h3 className="footer-brand-title">ZLOLCODING <span className="highlight-purple">PORTFOLIO</span></h3>
             <p className="footer-brand-desc">
               Personal web development portfolio of Ali Mohamed Ali Khaleel. Specialized in building modern, interactive web applications using React, GSAP, Framer Motion, and high-performance UI/UX designs.
             </p>

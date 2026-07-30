@@ -177,7 +177,7 @@ html::-webkit-scrollbar-thumb:active {
   /* مسافة بين الأيقونة والنص */
   background-color: #351b4a;
   border-radius: 50%;
-  padding: 9px;
+  padding: 9px ;
   box-shadow:
     0 4px 15px rgba(123, 31, 162, 0.4),
     /* ظل بنفسجي */
@@ -226,33 +226,20 @@ html::-webkit-scrollbar-thumb:active {
 @keyframes typing {
   from {
     width: 0;
+    opacity: 1;
   }
-
   to {
-    width: 26%;
-    /* عرض النص النهائي */
+    width: 100%;
+    opacity: 1;
   }
 }
 
 .typewriter {
   display: inline-block;
   overflow: hidden;
-  /* إخفاء النص الزائد */
   white-space: nowrap;
-  /* منع النص من الالتفاف */
-  animation: typing 3s steps(20, end) forwards;
-  /* تطبيق تأثير الكتابة */
-}
-
-@media (max-width: 768px) {
-  @keyframes typing {
-    from {
-      width: 0;
-    }
-
-    to {
-      width: 50%;
-      /* عرض النص النهائي */
-    }
-  }
+  width: 0;
+  max-width: max-content;
+  animation: typing 2.5s steps(22, end) forwards;
+  vertical-align: middle;
 }

@@ -295,7 +295,7 @@ function About() {
                 className="stat-number"
                 variants={numberVariants}
               >
-                1
+                3
               </motion.div>
               <motion.div
                 className="stat-title"
@@ -322,7 +322,7 @@ function About() {
                 className="stat-number"
                 variants={numberVariants}
               >
-                1
+                2
               </motion.div>
               <motion.div
                 className="stat-title"
