@@ -1,0 +1,258 @@
+/* App.css */
+::selection {
+  background-color: #4f38aa;
+  /* لون الخلفية عند التحديد */
+  color: white;
+  /* لون النص عند التحديد */
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-x: hidden;
+  background: linear-gradient(135deg, #0a043c, #1c062e, #2c003e);
+}
+
+/* لمتصفحات Firefox */
+/* شريط التمرير للصفحة كاملة */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #7a5af8 #0a043c;
+  z-index: 9999;
+  /* أعلى قيمة */
+  position: relative;
+}
+
+html::-webkit-scrollbar {
+  width: 12px;
+}
+
+html::-webkit-scrollbar-track {
+  background: #0a043c;
+  border-left: 1px solid #1c062e;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #7a5af8, #a239ea);
+  border-radius: 6px;
+  border: 2px solid #0a043c;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #9b7aff, #c252e9);
+}
+
+html::-webkit-scrollbar-thumb:active {
+  background: linear-gradient(135deg, #6a4ad8, #8e29ca);
+}
+
+
+.center-item {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+
+}
+
+.center-item h1 {
+
+  text-align: center;
+}
+
+.intro {
+
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  font-size: 1.2rem;
+
+}
+
+@media (max-width: 768px) {
+  .intro {
+    font-size: 0.8rem;
+  }
+}
+
+.icon-1,
+.icon-2,
+.icon-3 {
+  margin: 0;
+  background-color: #351b4a;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 1.5rem;
+  box-shadow:
+    0 4px 15px rgba(123, 31, 162, 0.4),
+    /* ظل بنفسجي */
+    0 2px 5px rgba(255, 105, 180, 0.3);
+  /* توهج وردي خفيف */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+
+  .icon-1,
+  .icon-2,
+  .icon-3 {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+}
+
+.word {
+  display: inline-block;
+  margin: 0 0.6vw;
+  /* مسافة 10px على الجانبين لكل أيقونة */
+  font-size: 4rem;
+  font-weight: 100;
+  font-family: "Brush Script MT", cursive;
+}
+
+.word2 {
+  display: inline-block;
+  font-size: 4.3rem;
+  margin: 0 0.9vw;
+  /* مسافة 10px على الجانبين لكل أيقونة */
+  font-weight: 100;
+  font-family: "Brush Script MT", cursive;
+  color: #6b21a8;
+  /* قريب من لون الصفحة لكن أفتح */
+  text-shadow:
+    0 0 12px rgba(107, 33, 168, 0.9);
+
+}
+
+@media (max-width: 768px) {
+  .word {
+    font-size: 2.2rem;
+  }
+
+  .word2 {
+    font-size: 2.3rem;
+  }
+}
+
+.header2 {
+  line-height: 0.3;
+  /* لتقليل المسافة بين السطور إذا كانت كبيرة */
+}
+
+.btn {
+  text-align: center;
+  font-size: 1rem;
+  transform: translateY(4vh);
+}
+
+.btn-link {
+  text-decoration: none;
+  color: white;
+  /* لون النص */
+  background-color: #7e39b6;
+  /* لون الخلفية */
+  padding: 10px 20px;
+  /* مساحة داخلية */
+  border-radius: 20px;
+  /* زوايا دائرية */
+  box-shadow:
+    0 4px 15px rgba(123, 31, 162, 0.4),
+    /* ظل بنفسجي */
+    0 2px 5px rgba(255, 105, 180, 0.3);
+  /* توهج وردي خفيف */
+  transition: all 0.3s ease;
+  /* تأثير سلس عند التغيير */
+}
+
+.globe-iconnn {
+  margin: 0 0.5vw;
+  /* مسافة بين الأيقونة والنص */
+  background-color: #351b4a;
+  border-radius: 50%;
+  padding: 9px;
+  box-shadow:
+    0 4px 15px rgba(123, 31, 162, 0.4),
+    /* ظل بنفسجي */
+    0 2px 5px rgba(255, 105, 180, 0.3);
+  position: relative;
+  /* توهج وردي خفيف */
+  font-size: 20px;
+  color: white;
+  box-sizing: content-box;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .btn {
+    font-size: 0.8rem;
+    /* تصغير حجم النص */
+    transform: translateY(2vh);
+    /* تعديل المسافة */
+  }
+
+  .btn-link {
+    padding: 8px 18px;
+    /* تقليل المساحة الداخلية */
+    font-size: 0.9rem;
+    /* تصغير حجم النص داخل الزر */
+  }
+}
+
+@media (max-width: 480px) {
+  .btn {
+    font-size: 0.7rem;
+    /* تصغير النص أكثر للشاشات الصغيرة */
+    transform: translateY(1vh);
+    /* تقليل المسافة */
+  }
+
+  .btn-link {
+    padding: 6px 15px;
+    /* تقليل المساحة الداخلية أكثر */
+    font-size: 0.8rem;
+    /* تصغير النص داخل الزر */
+  }
+}
+
+/* Typewriter Animation */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 26%;
+    /* عرض النص النهائي */
+  }
+}
+
+.typewriter {
+  display: inline-block;
+  overflow: hidden;
+  /* إخفاء النص الزائد */
+  white-space: nowrap;
+  /* منع النص من الالتفاف */
+  animation: typing 3s steps(20, end) forwards;
+  /* تطبيق تأثير الكتابة */
+}
+
+@media (max-width: 768px) {
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+
+    to {
+      width: 50%;
+      /* عرض النص النهائي */
+    }
+  }
+}

@@ -1,0 +1,215 @@
+.about {
+    display: flex;
+    min-height: 100vh;
+    justify-content: center;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+    z-index: 999;
+    position: relative;
+    padding-top: 6vh; /* لمنع اختفاء القسم خلف شريط التنقل */
+  scroll-margin-top: 6vh; 
+  scroll-behavior: smooth; /* إذا كنت تستخدم حاوية رئيسية */
+}
+
+.btn-groupp{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+.btn-groupp a{
+    text-decoration: none;
+}
+
+.btn-groupp .cv-link{
+    padding: 10px 20px;
+     background-color: #9448b5;
+     border-radius: 10px;
+    color: white;
+    box-shadow: 0 4px 20px rgba(123, 31, 162, 0.6),
+    inset 0 0 10px rgba(179, 136, 255, 0.4);
+}
+.btn-groupp .view-link{
+    padding: 10px 20px;
+    border:1px #bb4beb solid;
+    border-radius: 10px;
+    color:#bb4beb ;
+    text-transform: capitalize;
+  
+}
+.about h1 {
+    font-family: "Brush Script MT", cursive;
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: #b36eff;
+    text-transform: capitalize;
+    letter-spacing: 2px;
+    z-index: 999;
+    position: relative;
+}
+
+  .stats-container {
+        display: flex;
+        justify-content: space-between;
+        gap: 1.5rem;
+        
+        padding-top: 6vh;
+        flex-wrap: wrap;
+        
+    }
+
+    .stat-box {
+        background: rgba(179, 110, 255, 0.1);
+        border: 1px solid #b36eff;
+        border-radius: 10px;
+        padding: 1.5rem;
+        flex: 1 1 200px;
+        min-width: 150px;
+        transition: transform 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    
+    .stat-icon {
+        font-size: 1.5rem;
+        color: #b36eff;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .stat-content {
+        flex: 1;
+        text-align: left;
+    }
+
+    .stat-number {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #b36eff;
+        margin-bottom: 0.3rem;
+    }
+
+    .stat-title {
+        font-size: 0.8rem;
+        color: #e6d5ff;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    /* وسائط استجابة للشاشات الصغيرة */
+    @media (max-width: 768px) {
+        .stats-container {
+            gap: 1rem;
+            width: 90%;
+            
+        }
+        
+        .stat-box {
+            flex: 1 1 calc(50% - 1rem); /* بطاقتين في الصف على الشاشات الصغيرة */
+            padding: 1rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .stat-box {
+            flex: 1 1 100%; /* بطاقة واحدة في الصف على الهواتف */
+        }
+    }
+
+.profile-section {
+    display: flex;
+    
+    gap: 2rem; /* إضافة مسافة بين النص والصورة */
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 2rem;
+}
+
+.profile-text {
+    flex: 1;
+}
+
+.profile-text h2 {
+    color: #d9a1ff;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.profile-text p {
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    color: #e6d5ff;
+}
+
+.profile-image {
+    display: flex;
+    justify-content: flex-end;
+    flex: 1;
+}
+
+.image-placeholder {
+    width: 100%;
+    max-width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    background: rgba(179, 110, 255, 0.1);
+    border: 3px solid #b36eff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #b36eff;
+    font-size: 1.2rem;
+    box-shadow: 0 0 20px 5px rgba(179, 110, 255, 0.4); /* ظل بنفس لون الحدود */
+    filter: drop-shadow(0 0 10px rgba(179, 110, 255, 0.6)); /* تعزيز الظل */
+}
+.my-name{
+    font-size: 2rem;
+    color: white;
+    text-transform: capitalize;
+    margin: 0;
+}
+/* Responsive design */
+@media (max-width: 992px) {
+    .profile-section {
+        flex-direction: column;
+    }
+    
+    .profile-image {
+        order: 1;
+        margin-bottom: 2rem;
+        justify-content: center; /* توسيط الصورة في الشاشات الصغيرة */
+    }
+    
+    .profile-text {
+        order: 2;
+    }
+}
+
+@media (max-width: 768px) {
+    .stats-container {
+        flex-direction: column;
+    }
+    
+    .stat-box {
+        min-width: 100%;
+    }
+    
+    .image-placeholder {
+        height: 260px;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-content {
+        padding: 1rem;
+    }
+    
+    .profile-section {
+        padding: 1.5rem;
+    }
+}

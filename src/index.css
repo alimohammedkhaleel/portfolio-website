@@ -1,0 +1,50 @@
+/* ═══════════════════════════════════════════════════════════
+   Global Styles — Ellol Portfolio
+   ═══════════════════════════════════════════════════════════ */
+
+/* Base Reset & Defaults */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'Poppins', 'Outfit', system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  color: #e4e4e7;
+  background: linear-gradient(135deg, #0a043c, #1c062e, #2c003e);
+  min-height: 100vh;
+}
+
+/* Selection highlight */
+::selection {
+  background-color: #4f38aa;
+  color: white;
+}
+
+/* Smooth image rendering */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Remove default link underlines */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Remove default list styles */
+ul, ol {
+  list-style: none;
+}
