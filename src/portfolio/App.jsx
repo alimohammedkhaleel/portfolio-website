@@ -5,6 +5,7 @@ import { FaRegUser } from "react-icons/fa6";
 import './portfolio.css';
 import { motion } from "framer-motion";
 import Navbar from '../nav-component/Navbar';
+import Typewriter from '../components/Typewriter';
 
 // Lazy load components for better performance (Code Splitting)
 const MainContent = lazy(() => import('../main-content/main-content'));
@@ -19,8 +20,8 @@ const iconVariants = {
     y: 0,
     opacity: 1,
     transition: {
-      delay: i * 0.3,
-      duration: 0.8,
+      delay: i * 0.2,
+      duration: 0.6,
       ease: "backOut"
     }
   })
@@ -35,8 +36,8 @@ const headerVariants = {
     x: 0,
     opacity: 1,
     transition: {
-      delay: (4 * 0.3) + (i * 0.3),
-      duration: 0.8,
+      delay: (3 * 0.2) + (i * 0.2),
+      duration: 0.6,
       ease: "backOut"
     }
   })
@@ -51,8 +52,8 @@ const headerVariants2 = {
     y: 0,
     opacity: 1,
     transition: {
-      delay: 2.4 + (i * 0.3),
-      duration: 0.8,
+      delay: 1.6 + (i * 0.2),
+      duration: 0.6,
       ease: "backOut"
     }
   })
@@ -63,8 +64,8 @@ const btnvariants = {
   visible: {
     opacity: 1,
     transition: {
-      delay: 2.4,
-      duration: 1.5
+      delay: 1.6,
+      duration: 1
     }
   }
 };
@@ -77,14 +78,17 @@ const Portfolio = () => {
   useEffect(() => {
     const typewriterTimeout = setTimeout(() => {
       setShowText(true);
-    }, 2000);
+    }, 1400);
 
     const moveCircles = () => {
+      const isMobile = window.innerWidth <= 768;
       circlesRef.current.forEach((circle, index) => {
         if (circle) {
           gsap.to(circle, {
-            x: index % 2 === 0 ? window.innerWidth - 200 : -window.innerWidth + 200,
-            duration: 10,
+            x: isMobile 
+              ? (index % 2 === 0 ? 50 : -50) 
+              : (index % 2 === 0 ? window.innerWidth - 200 : -window.innerWidth + 200),
+            duration: isMobile ? 12 : 10,
             repeat: -1,
             yoyo: true,
             ease: "power1.inOut"
@@ -95,25 +99,25 @@ const Portfolio = () => {
 
     const transitionTimeout = setTimeout(() => {
       gsap.to(".intro, .header-group", {
-        scale: 1.14,
-        duration: 1.2,
+        scale: 1.1,
+        duration: 0.8,
         ease: "power2.out",
         onComplete: () => {
           gsap.to(".intro, .header-group", {
             opacity: 0,
-            duration: 1,
+            duration: 0.6,
             ease: "power2.out",
             onComplete: () => {
               gsap.set(".center-item", { display: "none" });
               gsap.to(".new-background", {
                 opacity: 1,
                 visibility: "visible",
-                duration: 1,
+                duration: 0.8,
                 ease: "power2.out",
                 onComplete: () => {
                   gsap.to(".circle", {
-                    opacity: 0.7,
-                    duration: 1,
+                    opacity: 0.6,
+                    duration: 0.8,
                     ease: "power2.out",
                     onComplete: moveCircles
                   });
@@ -123,7 +127,7 @@ const Portfolio = () => {
           });
         }
       });
-    }, 5400);
+    }, 3800);
 
     return () => {
       clearTimeout(typewriterTimeout);
@@ -231,9 +235,12 @@ const Portfolio = () => {
             >
               <FaGlobe className="globe-iconnn" />
               {showText && (
-                <span className="typewriter">
-                  zlolcoding.vercel.app
-                </span>
+                <Typewriter 
+                  text="zlolcoding.vercel.app" 
+                  speed={70} 
+                  delay={100}
+                  showCursor={true}
+                />
               )}
             </motion.a>
           </div>
@@ -251,12 +258,14 @@ const Portfolio = () => {
               id={`circle${index + 1}`}
               style={{
                 backgroundColor: color,
-                width: '200px',
-                height: '200px',
+                width: 'min(200px, 45vw)',
+                height: 'min(200px, 45vw)',
                 position: 'absolute',
                 borderRadius: '50%',
-                filter: 'blur(60px)',
+                filter: 'blur(45px)',
                 opacity: 0,
+                willChange: 'transform',
+                transform: 'translateZ(0)',
                 ...(index === 0 && { top: '2%', left: '0' }),
                 ...(index === 1 && { top: '2%', right: '0' }),
                 ...(index === 2 && { bottom: '2%', left: '0' }),
@@ -276,7 +285,7 @@ function App() {
   useEffect(() => {
     const presentationTimeout = setTimeout(() => {
       setShowNavbar(true);
-    }, 8000);
+    }, 5000);
 
     return () => clearTimeout(presentationTimeout);
   }, []);

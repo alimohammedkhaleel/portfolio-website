@@ -127,14 +127,17 @@
 
 @media (max-width: 768px) {
   .showcase-content {
-    padding: 1.5rem 1rem;
+    padding: 1.25rem 0.85rem;
     border-radius: 16px;
+    background: rgba(15, 12, 41, 0.85);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
   }
 }
 
 @media (max-width: 480px) {
   .showcase-content {
-    padding: 1.2rem 0.75rem;
+    padding: 1rem 0.6rem;
     border-radius: 12px;
   }
 }

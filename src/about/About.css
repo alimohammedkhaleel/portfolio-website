@@ -153,9 +153,9 @@
 }
 
 .image-placeholder {
-    width: 100%;
-    max-width: 260px;
-    height: 260px;
+    width: min(240px, 60vw);
+    height: min(240px, 60vw);
+    aspect-ratio: 1 / 1;
     border-radius: 50%;
     background: rgba(179, 110, 255, 0.1);
     border: 3px solid #b36eff;
@@ -164,11 +164,11 @@
     justify-content: center;
     color: #b36eff;
     font-size: 1.2rem;
-    box-shadow: 0 0 20px 5px rgba(179, 110, 255, 0.4); /* ظل بنفس لون الحدود */
-    filter: drop-shadow(0 0 10px rgba(179, 110, 255, 0.6)); /* تعزيز الظل */
+    box-shadow: 0 0 20px 5px rgba(179, 110, 255, 0.4);
+    filter: drop-shadow(0 0 10px rgba(179, 110, 255, 0.6));
 }
 .my-name{
-    font-size: 2rem;
+    font-size: clamp(1.6rem, 5vw, 2.2rem);
     color: white;
     text-transform: capitalize;
     margin: 0;
@@ -182,7 +182,7 @@
     .profile-image {
         order: 1;
         margin-bottom: 2rem;
-        justify-content: center; /* توسيط الصورة في الشاشات الصغيرة */
+        justify-content: center;
     }
     
     .profile-text {
@@ -198,18 +198,23 @@
     .stat-box {
         min-width: 100%;
     }
-    
-    .image-placeholder {
-        height: 260px;
-    }
 }
 
 @media (max-width: 480px) {
     .about-content {
-        padding: 1rem;
+        padding: 0.75rem;
     }
     
     .profile-section {
-        padding: 1.5rem;
+        padding: 1.2rem;
+    }
+
+    .btn-groupp {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+
+    .btn-groupp a {
+        text-align: center;
     }
 }

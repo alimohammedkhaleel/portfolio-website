@@ -9,6 +9,7 @@ import { motion } from "framer-motion";
 import { useInView } from 'react-intersection-observer';
 import { FaGithub, FaWhatsapp, FaTiktok } from 'react-icons/fa';
 import { SiVercel } from 'react-icons/si';
+import Typewriter from '../components/Typewriter';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -134,10 +135,17 @@ function MainContent() {
 
           {/* Subtitle */}
           <motion.p 
-            className="subtitle typewriter-2"
+            className="subtitle"
             variants={itemVariants}
           >
-            IT student at NCT
+            <Typewriter 
+              text="IT student at NCT" 
+              speed={75} 
+              delay={300}
+              loop={true}
+              pauseDelay={2500}
+              showCursor={true}
+            />
           </motion.p>
 
           {/* Description */}

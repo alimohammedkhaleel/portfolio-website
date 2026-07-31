@@ -192,54 +192,38 @@ html::-webkit-scrollbar-thumb:active {
 /* Media Queries */
 @media (max-width: 768px) {
   .btn {
-    font-size: 0.8rem;
-    /* تصغير حجم النص */
+    font-size: 0.85rem;
     transform: translateY(2vh);
-    /* تعديل المسافة */
   }
 
   .btn-link {
     padding: 8px 18px;
-    /* تقليل المساحة الداخلية */
-    font-size: 0.9rem;
-    /* تصغير حجم النص داخل الزر */
+    font-size: 0.88rem;
+  }
+
+  .circle {
+    filter: blur(30px) !important;
+    will-change: transform;
+    transform: translateZ(0);
   }
 }
 
 @media (max-width: 480px) {
   .btn {
-    font-size: 0.7rem;
-    /* تصغير النص أكثر للشاشات الصغيرة */
+    font-size: 0.78rem;
     transform: translateY(1vh);
-    /* تقليل المسافة */
   }
 
   .btn-link {
-    padding: 6px 15px;
-    /* تقليل المساحة الداخلية أكثر */
-    font-size: 0.8rem;
-    /* تصغير النص داخل الزر */
+    padding: 6px 14px;
+    font-size: 0.82rem;
   }
-}
 
-/* Typewriter Animation */
-@keyframes typing {
-  from {
-    width: 0;
-    opacity: 1;
+  .word {
+    font-size: 1.8rem;
   }
-  to {
-    width: 100%;
-    opacity: 1;
-  }
-}
 
-.typewriter {
-  display: inline-block;
-  overflow: hidden;
-  white-space: nowrap;
-  width: 0;
-  max-width: max-content;
-  animation: typing 2.5s steps(22, end) forwards;
-  vertical-align: middle;
+  .word2 {
+    font-size: 1.9rem;
+  }
 }
