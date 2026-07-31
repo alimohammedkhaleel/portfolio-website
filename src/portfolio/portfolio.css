@@ -151,42 +151,46 @@ html::-webkit-scrollbar-thumb:active {
   text-align: center;
   font-size: 1rem;
   transform: translateY(4vh);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .btn-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
   text-decoration: none;
   color: white;
-  /* لون النص */
   background-color: #7e39b6;
-  /* لون الخلفية */
-  padding: 10px 20px;
-  /* مساحة داخلية */
-  border-radius: 20px;
-  /* زوايا دائرية */
+  padding: 8px 18px 8px 10px;
+  border-radius: 25px;
   box-shadow:
     0 4px 15px rgba(123, 31, 162, 0.4),
-    /* ظل بنفسجي */
     0 2px 5px rgba(255, 105, 180, 0.3);
-  /* توهج وردي خفيف */
   transition: all 0.3s ease;
-  /* تأثير سلس عند التغيير */
+  white-space: nowrap;
+  box-sizing: border-box;
 }
 
 .globe-iconnn {
-  margin: 0 0.5vw;
-  /* مسافة بين الأيقونة والنص */
+  margin: 0;
   background-color: #351b4a;
   border-radius: 50%;
-  padding: 9px ;
+  padding: 8px;
   box-shadow:
     0 4px 15px rgba(123, 31, 162, 0.4),
-    /* ظل بنفسجي */
     0 2px 5px rgba(255, 105, 180, 0.3);
   position: relative;
-  /* توهج وردي خفيف */
-  font-size: 20px;
+  font-size: 18px;
   color: white;
-  box-sizing: content-box;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
 /* Media Queries */
@@ -197,8 +201,14 @@ html::-webkit-scrollbar-thumb:active {
   }
 
   .btn-link {
-    padding: 8px 18px;
-    font-size: 0.88rem;
+    padding: 6px 14px 6px 8px;
+    font-size: 0.85rem;
+    gap: 8px;
+  }
+
+  .globe-iconnn {
+    padding: 6px;
+    font-size: 15px;
   }
 
   .circle {
@@ -215,8 +225,9 @@ html::-webkit-scrollbar-thumb:active {
   }
 
   .btn-link {
-    padding: 6px 14px;
-    font-size: 0.82rem;
+    padding: 5px 12px 5px 6px;
+    font-size: 0.8rem;
+    gap: 6px;
   }
 
   .word {
