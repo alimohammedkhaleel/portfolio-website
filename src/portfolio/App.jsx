@@ -78,17 +78,16 @@ const Portfolio = () => {
   useEffect(() => {
     const typewriterTimeout = setTimeout(() => {
       setShowText(true);
-    }, 1400);
+    }, 1000);
 
     const moveCircles = () => {
       const isMobile = window.innerWidth <= 768;
+      if (isMobile) return; // Skip heavy GSAP tick loop on mobile for maximum performance
       circlesRef.current.forEach((circle, index) => {
         if (circle) {
           gsap.to(circle, {
-            x: isMobile 
-              ? (index % 2 === 0 ? 50 : -50) 
-              : (index % 2 === 0 ? window.innerWidth - 200 : -window.innerWidth + 200),
-            duration: isMobile ? 12 : 10,
+            x: index % 2 === 0 ? window.innerWidth - 200 : -window.innerWidth + 200,
+            duration: 10,
             repeat: -1,
             yoyo: true,
             ease: "power1.inOut"
@@ -99,25 +98,25 @@ const Portfolio = () => {
 
     const transitionTimeout = setTimeout(() => {
       gsap.to(".intro, .header-group", {
-        scale: 1.1,
-        duration: 0.8,
+        scale: 1.05,
+        duration: 0.6,
         ease: "power2.out",
         onComplete: () => {
           gsap.to(".intro, .header-group", {
             opacity: 0,
-            duration: 0.6,
+            duration: 0.4,
             ease: "power2.out",
             onComplete: () => {
               gsap.set(".center-item", { display: "none" });
               gsap.to(".new-background", {
                 opacity: 1,
                 visibility: "visible",
-                duration: 0.8,
+                duration: 0.5,
                 ease: "power2.out",
                 onComplete: () => {
                   gsap.to(".circle", {
                     opacity: 0.6,
-                    duration: 0.8,
+                    duration: 0.5,
                     ease: "power2.out",
                     onComplete: moveCircles
                   });
@@ -127,7 +126,7 @@ const Portfolio = () => {
           });
         }
       });
-    }, 3800);
+    }, 2800);
 
     return () => {
       clearTimeout(typewriterTimeout);
@@ -287,7 +286,7 @@ function App() {
   useEffect(() => {
     const presentationTimeout = setTimeout(() => {
       setShowNavbar(true);
-    }, 5000);
+    }, 3600);
 
     return () => clearTimeout(presentationTimeout);
   }, []);

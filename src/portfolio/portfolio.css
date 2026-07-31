@@ -55,21 +55,39 @@ html::-webkit-scrollbar-thumb:active {
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+  max-width: 90vw;
+  box-sizing: border-box;
 }
 
 .center-item h1 {
-
   text-align: center;
+  margin: 0;
+}
+
+.header-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.header, .header2 {
+  line-height: 1.1;
+  text-align: center;
+  margin: 0;
 }
 
 .intro {
-
   display: flex;
   justify-content: center;
-  gap: 1rem;
+  gap: 1.2rem;
   font-size: 1.2rem;
-
 }
 
 @media (max-width: 768px) {
@@ -89,9 +107,7 @@ html::-webkit-scrollbar-thumb:active {
   font-size: 1.5rem;
   box-shadow:
     0 4px 15px rgba(123, 31, 162, 0.4),
-    /* ظل بنفسجي */
     0 2px 5px rgba(255, 105, 180, 0.3);
-  /* توهج وردي خفيف */
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -99,7 +115,6 @@ html::-webkit-scrollbar-thumb:active {
 }
 
 @media (max-width: 768px) {
-
   .icon-1,
   .icon-2,
   .icon-3 {
@@ -112,7 +127,6 @@ html::-webkit-scrollbar-thumb:active {
 .word {
   display: inline-block;
   margin: 0 0.6vw;
-  /* مسافة 10px على الجانبين لكل أيقونة */
   font-size: 4rem;
   font-weight: 100;
   font-family: "Brush Script MT", cursive;
@@ -122,35 +136,15 @@ html::-webkit-scrollbar-thumb:active {
   display: inline-block;
   font-size: 4.3rem;
   margin: 0 0.9vw;
-  /* مسافة 10px على الجانبين لكل أيقونة */
   font-weight: 100;
   font-family: "Brush Script MT", cursive;
   color: #6b21a8;
-  /* قريب من لون الصفحة لكن أفتح */
-  text-shadow:
-    0 0 12px rgba(107, 33, 168, 0.9);
-
-}
-
-@media (max-width: 768px) {
-  .word {
-    font-size: 2.2rem;
-  }
-
-  .word2 {
-    font-size: 2.3rem;
-  }
-}
-
-.header2 {
-  line-height: 0.3;
-  /* لتقليل المسافة بين السطور إذا كانت كبيرة */
+  text-shadow: 0 0 12px rgba(107, 33, 168, 0.9);
 }
 
 .btn {
   text-align: center;
   font-size: 1rem;
-  transform: translateY(4vh);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -203,9 +197,16 @@ html::-webkit-scrollbar-thumb:active {
 
 /* Media Queries */
 @media (max-width: 768px) {
+  .center-item {
+    gap: 1.8rem;
+  }
+
+  .header-group {
+    gap: 1.2rem;
+  }
+
   .btn {
     font-size: 0.85rem;
-    transform: translateY(2vh);
   }
 
   .btn-link {
@@ -229,6 +230,14 @@ html::-webkit-scrollbar-thumb:active {
     padding: 0 !important;
   }
 
+  .word {
+    font-size: 2.2rem;
+  }
+
+  .word2 {
+    font-size: 2.3rem;
+  }
+
   .circle {
     filter: blur(30px) !important;
     will-change: transform;
@@ -237,9 +246,16 @@ html::-webkit-scrollbar-thumb:active {
 }
 
 @media (max-width: 480px) {
+  .center-item {
+    gap: 1.5rem;
+  }
+
+  .header-group {
+    gap: 1rem;
+  }
+
   .btn {
     font-size: 0.78rem;
-    transform: translateY(1vh);
   }
 
   .btn-link {
