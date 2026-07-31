@@ -11,36 +11,38 @@ import { FaGithub, FaWhatsapp, FaTiktok } from 'react-icons/fa';
 import { SiVercel } from 'react-icons/si';
 import Typewriter from '../components/Typewriter';
 
+const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.2,
-      delayChildren: 0.3
+      staggerChildren: isMobile ? 0.05 : 0.15,
+      delayChildren: isMobile ? 0.05 : 0.2
     }
   }
 };
 
 const itemVariants = {
-  hidden: { y: 20, opacity: 0 },
+  hidden: { y: isMobile ? 8 : 20, opacity: 0 },
   visible: {
     y: 0,
     opacity: 1,
     transition: {
-      duration: 0.5,
+      duration: isMobile ? 0.2 : 0.45,
       ease: "easeOut"
     }
   }
 };
 
-const hoverEffect = {
+const hoverEffect = isMobile ? {} : {
   scale: 1.05,
   transition: { type: "spring", stiffness: 400, damping: 10 }
 };
 
 const tapEffect = {
-  scale: 0.95
+  scale: 0.97
 };
 
 function MainContent() {

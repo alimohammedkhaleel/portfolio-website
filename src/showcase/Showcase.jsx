@@ -279,20 +279,25 @@ function Showcase() {
     ? projects 
     : projects.filter(p => p.category === selectedCategory);
 
+  const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.12, delayChildren: 0.1 }
+      transition: {
+        staggerChildren: isMobile ? 0.04 : 0.12,
+        delayChildren: isMobile ? 0.04 : 0.1
+      }
     }
   };
 
   const itemVariants = {
-    hidden: { y: 25, opacity: 0 },
+    hidden: { y: isMobile ? 8 : 25, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
-      transition: { duration: 0.45, ease: "easeOut" }
+      transition: { duration: isMobile ? 0.2 : 0.45, ease: "easeOut" }
     }
   };
 
@@ -304,9 +309,9 @@ function Showcase() {
     >
       <motion.div 
         className="showcase-header"
-        initial={{ y: -40, opacity: 0 }}
-        animate={inView ? { y: 0, opacity: 1 } : { y: -30, opacity: 0 }}
-        transition={{ type: 'spring', stiffness: 100, damping: 12 }}
+        initial={isMobile ? { opacity: 0 } : { y: -40, opacity: 0 }}
+        animate={inView ? (isMobile ? { opacity: 1 } : { y: 0, opacity: 1 }) : { opacity: 0 }}
+        transition={isMobile ? { duration: 0.2 } : { type: 'spring', stiffness: 100, damping: 12 }}
       >
         <span className="section-subtitle">MY WORK &amp; SKILLS</span>
         <h2>Portfolio Showcase</h2>
@@ -320,7 +325,7 @@ function Showcase() {
         <motion.button 
           className={activeTab === 'projects' ? 'active' : ''}
           onClick={() => setActiveTab('projects')}
-          whileHover={{ scale: 1.04 }}
+          whileHover={isMobile ? {} : { scale: 1.04 }}
           whileTap={{ scale: 0.96 }}
         >
           <FaLayerGroup style={{ marginRight: 8 }} /> Projects ({projects.length})
@@ -329,7 +334,7 @@ function Showcase() {
         <motion.button 
           className={activeTab === 'tech' ? 'active' : ''}
           onClick={() => setActiveTab('tech')}
-          whileHover={{ scale: 1.04 }}
+          whileHover={isMobile ? {} : { scale: 1.04 }}
           whileTap={{ scale: 0.96 }}
         >
           <FaGlobe style={{ marginRight: 8 }} /> Tech Stack ({techItems.length})
@@ -338,7 +343,7 @@ function Showcase() {
         <motion.button 
           className={activeTab === 'certificates' ? 'active' : ''}
           onClick={() => setActiveTab('certificates')}
-          whileHover={{ scale: 1.04 }}
+          whileHover={isMobile ? {} : { scale: 1.04 }}
           whileTap={{ scale: 0.96 }}
         >
           <FaGraduationCap style={{ marginRight: 8 }} /> Certificates
@@ -349,10 +354,10 @@ function Showcase() {
         <motion.div 
           key={activeTab}
           className="showcase-content"
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -15 }}
-          transition={{ duration: 0.35 }}
+          initial={isMobile ? { opacity: 0 } : { opacity: 0, y: 15 }}
+          animate={isMobile ? { opacity: 1 } : { opacity: 1, y: 0 }}
+          exit={isMobile ? { opacity: 0 } : { opacity: 0, y: -15 }}
+          transition={{ duration: isMobile ? 0.15 : 0.35 }}
         >
           {activeTab === 'projects' && (
             <div className="projects-wrapper">

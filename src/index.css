@@ -23,6 +23,7 @@ body {
   color: #e4e4e7;
   background: linear-gradient(135deg, #0a043c, #1c062e, #2c003e);
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 /* Selection highlight */
@@ -47,4 +48,16 @@ a {
 /* Remove default list styles */
 ul, ol {
   list-style: none;
+}
+
+/* Mobile Performance & Animation Simplification */
+@media (max-width: 768px) {
+  .portfolio-container .circle {
+    display: none !important;
+  }
+
+  .btn-linkk, .cv-link, .view-link, .submit-button, .social-icon, .btn-link {
+    transition: background-color 0.15s ease, opacity 0.15s ease !important;
+    transform: none !important;
+  }
 }

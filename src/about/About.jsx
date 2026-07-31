@@ -5,30 +5,28 @@ import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { useEffect } from 'react';
 import profilePic from '../assets/profile-pic.png';
+const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+
 // Animation Configurations
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.3,
-      delayChildren: 0.2
+      staggerChildren: isMobile ? 0.05 : 0.2,
+      delayChildren: isMobile ? 0.05 : 0.15
     }
   }
 };
 
 const itemVariants = {
-  hidden: { y: 40, opacity: 0, rotateX: -30 },
+  hidden: { y: isMobile ? 10 : 30, opacity: 0 },
   visible: {
     y: 0,
     opacity: 1,
-    rotateX: 0,
     transition: {
-      type: 'spring',
-      stiffness: 80,
-      damping: 8,
-      mass: 0.8,
-      duration: 1
+      duration: isMobile ? 0.2 : 0.5,
+      ease: "easeOut"
     }
   }
 };
@@ -38,43 +36,30 @@ const statsContainerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.3,
-      delayChildren: 0.5
+      staggerChildren: isMobile ? 0.05 : 0.2,
+      delayChildren: isMobile ? 0.05 : 0.2
     }
   }
 };
 
 const statBoxVariants = {
   hidden: {
-    y: 80,
-    opacity: 0,
-    scale: 0.7,
-    rotate: -10
+    y: isMobile ? 10 : 40,
+    opacity: 0
   },
   visible: {
     y: 0,
     opacity: 1,
-    scale: 1,
-    rotate: 0,
     transition: {
-      type: 'spring',
-      stiffness: 100,
-      damping: 10,
-      mass: 0.7,
-      duration: 1.2
+      duration: isMobile ? 0.2 : 0.5,
+      ease: "easeOut"
     }
   },
-  hover: {
-    y: -20,
-    scale: 1.1,
-    boxShadow: "0px 20px 30px rgba(179, 110, 255, 0.3)",
-    background: "rgba(179, 110, 255, 0.2)",
-    transition: {
-      type: 'spring',
-      stiffness: 300,
-      damping: 12,
-      duration: 0.8
-    }
+  hover: isMobile ? {} : {
+    y: -10,
+    scale: 1.05,
+    boxShadow: "0px 15px 25px rgba(179, 110, 255, 0.25)",
+    transition: { duration: 0.3 }
   }
 };
 

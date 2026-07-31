@@ -6,50 +6,54 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
 function Contact() {
+  const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+
   // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3
+        staggerChildren: isMobile ? 0.05 : 0.15,
+        delayChildren: isMobile ? 0.05 : 0.2
       }
     }
   };
 
   const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
+    hidden: { y: isMobile ? 8 : 20, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
       transition: {
-        duration: 0.5,
+        duration: isMobile ? 0.2 : 0.45,
         ease: "easeOut"
       }
     }
   };
 
   const formVariants = {
-    hidden: { x: -50, opacity: 0 },
+    hidden: { x: isMobile ? 0 : -50, y: isMobile ? 10 : 0, opacity: 0 },
     visible: {
       x: 0,
+      y: 0,
       opacity: 1,
       transition: {
-        duration: 0.6,
-        ease: "backOut"
+        duration: isMobile ? 0.25 : 0.5,
+        ease: "easeOut"
       }
     }
   };
 
   const commentFormVariants = {
-    hidden: { x: 50, opacity: 0 },
+    hidden: { x: isMobile ? 0 : 50, y: isMobile ? 10 : 0, opacity: 0 },
     visible: {
       x: 0,
+      y: 0,
       opacity: 1,
       transition: {
-        duration: 0.6,
-        ease: "backOut"
+        duration: isMobile ? 0.25 : 0.5,
+        ease: "easeOut"
       }
     }
   };

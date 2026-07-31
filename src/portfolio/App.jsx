@@ -96,37 +96,41 @@ const Portfolio = () => {
       });
     };
 
+    const isMobile = window.innerWidth <= 768;
+
     const transitionTimeout = setTimeout(() => {
       gsap.to(".intro, .header-group", {
-        scale: 1.05,
-        duration: 0.6,
+        scale: 1.02,
+        duration: isMobile ? 0.3 : 0.6,
         ease: "power2.out",
         onComplete: () => {
           gsap.to(".intro, .header-group", {
             opacity: 0,
-            duration: 0.4,
+            duration: isMobile ? 0.25 : 0.4,
             ease: "power2.out",
             onComplete: () => {
               gsap.set(".center-item", { display: "none" });
               gsap.to(".new-background", {
                 opacity: 1,
                 visibility: "visible",
-                duration: 0.5,
+                duration: isMobile ? 0.3 : 0.5,
                 ease: "power2.out",
                 onComplete: () => {
-                  gsap.to(".circle", {
-                    opacity: 0.6,
-                    duration: 0.5,
-                    ease: "power2.out",
-                    onComplete: moveCircles
-                  });
+                  if (!isMobile) {
+                    gsap.to(".circle", {
+                      opacity: 0.6,
+                      duration: 0.5,
+                      ease: "power2.out",
+                      onComplete: moveCircles
+                    });
+                  }
                 }
               });
             }
           });
         }
       });
-    }, 2800);
+    }, isMobile ? 1200 : 2600);
 
     return () => {
       clearTimeout(typewriterTimeout);
@@ -284,9 +288,10 @@ function App() {
   const [showNavbar, setShowNavbar] = useState(false);
 
   useEffect(() => {
+    const isMobile = window.innerWidth <= 768;
     const presentationTimeout = setTimeout(() => {
       setShowNavbar(true);
-    }, 3600);
+    }, isMobile ? 1500 : 3400);
 
     return () => clearTimeout(presentationTimeout);
   }, []);
