@@ -20,8 +20,8 @@ const iconVariants = {
     y: 0,
     opacity: 1,
     transition: {
-      delay: i * 0.2,
-      duration: 0.6,
+      delay: i * 0.3,
+      duration: 0.8,
       ease: "backOut"
     }
   })
@@ -36,8 +36,8 @@ const headerVariants = {
     x: 0,
     opacity: 1,
     transition: {
-      delay: (3 * 0.2) + (i * 0.2),
-      duration: 0.6,
+      delay: (4 * 0.3) + (i * 0.3),
+      duration: 0.8,
       ease: "backOut"
     }
   })
@@ -52,8 +52,8 @@ const headerVariants2 = {
     y: 0,
     opacity: 1,
     transition: {
-      delay: 1.6 + (i * 0.2),
-      duration: 0.6,
+      delay: 2.4 + (i * 0.3),
+      duration: 0.8,
       ease: "backOut"
     }
   })
@@ -64,8 +64,8 @@ const btnvariants = {
   visible: {
     opacity: 1,
     transition: {
-      delay: 1.6,
-      duration: 1
+      delay: 2.4,
+      duration: 1.5
     }
   }
 };
@@ -78,11 +78,11 @@ const Portfolio = () => {
   useEffect(() => {
     const typewriterTimeout = setTimeout(() => {
       setShowText(true);
-    }, 1000);
+    }, 2000);
 
     const moveCircles = () => {
       const isMobile = window.innerWidth <= 768;
-      if (isMobile) return; // Skip heavy GSAP tick loop on mobile for maximum performance
+      if (isMobile) return;
       circlesRef.current.forEach((circle, index) => {
         if (circle) {
           gsap.to(circle, {
@@ -96,41 +96,37 @@ const Portfolio = () => {
       });
     };
 
-    const isMobile = window.innerWidth <= 768;
-
     const transitionTimeout = setTimeout(() => {
       gsap.to(".intro, .header-group", {
-        scale: 1.02,
-        duration: isMobile ? 0.3 : 0.6,
+        scale: 1.14,
+        duration: 1.2,
         ease: "power2.out",
         onComplete: () => {
           gsap.to(".intro, .header-group", {
             opacity: 0,
-            duration: isMobile ? 0.25 : 0.4,
+            duration: 1,
             ease: "power2.out",
             onComplete: () => {
               gsap.set(".center-item", { display: "none" });
               gsap.to(".new-background", {
                 opacity: 1,
                 visibility: "visible",
-                duration: isMobile ? 0.3 : 0.5,
+                duration: 1,
                 ease: "power2.out",
                 onComplete: () => {
-                  if (!isMobile) {
-                    gsap.to(".circle", {
-                      opacity: 0.6,
-                      duration: 0.5,
-                      ease: "power2.out",
-                      onComplete: moveCircles
-                    });
-                  }
+                  gsap.to(".circle", {
+                    opacity: 0.7,
+                    duration: 1,
+                    ease: "power2.out",
+                    onComplete: moveCircles
+                  });
                 }
               });
             }
           });
         }
       });
-    }, isMobile ? 1200 : 2600);
+    }, 5400);
 
     return () => {
       clearTimeout(typewriterTimeout);
@@ -288,10 +284,9 @@ function App() {
   const [showNavbar, setShowNavbar] = useState(false);
 
   useEffect(() => {
-    const isMobile = window.innerWidth <= 768;
     const presentationTimeout = setTimeout(() => {
       setShowNavbar(true);
-    }, isMobile ? 1500 : 3400);
+    }, 8000);
 
     return () => clearTimeout(presentationTimeout);
   }, []);
