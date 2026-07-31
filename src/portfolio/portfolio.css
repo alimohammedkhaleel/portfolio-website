@@ -166,7 +166,7 @@ html::-webkit-scrollbar-thumb:active {
   color: white;
   background-color: #7e39b6;
   padding: 8px 18px 8px 10px;
-  border-radius: 25px;
+  border-radius: 30px;
   box-shadow:
     0 4px 15px rgba(123, 31, 162, 0.4),
     0 2px 5px rgba(255, 105, 180, 0.3);
@@ -175,22 +175,30 @@ html::-webkit-scrollbar-thumb:active {
   box-sizing: border-box;
 }
 
-.globe-iconnn {
-  margin: 0;
+.globe-icon-wrapper {
   background-color: #351b4a;
   border-radius: 50%;
-  padding: 8px;
-  box-shadow:
-    0 4px 15px rgba(123, 31, 162, 0.4),
-    0 2px 5px rgba(255, 105, 180, 0.3);
-  position: relative;
-  font-size: 18px;
-  color: white;
-  box-sizing: border-box;
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  min-height: 32px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  box-shadow:
+    0 4px 15px rgba(123, 31, 162, 0.4),
+    0 2px 5px rgba(255, 105, 180, 0.3);
   flex-shrink: 0;
+}
+
+.globe-iconnn {
+  font-size: 16px !important;
+  width: 16px !important;
+  height: 16px !important;
+  color: white;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: block;
 }
 
 /* Media Queries */
@@ -206,9 +214,19 @@ html::-webkit-scrollbar-thumb:active {
     gap: 8px;
   }
 
+  .globe-icon-wrapper {
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    min-height: 28px;
+  }
+
   .globe-iconnn {
-    padding: 6px;
-    font-size: 15px;
+    font-size: 14px !important;
+    width: 14px !important;
+    height: 14px !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
   .circle {

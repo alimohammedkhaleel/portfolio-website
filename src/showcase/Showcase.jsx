@@ -298,7 +298,7 @@ function Showcase() {
 
   return (
     <motion.div 
-      id="pricing"
+      id="portfolio"
       className="show-case" 
       ref={ref}
     >

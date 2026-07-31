@@ -222,7 +222,7 @@ function About() {
                 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <a href="#pricing" className="view-link">View Projects</a>
+                <a href="#portfolio" onClick={(e) => handleScrollToSection(e, 'portfolio')} className="view-link">View Projects</a>
               </motion.div>
             </motion.div>
           </motion.div>

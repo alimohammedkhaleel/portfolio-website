@@ -15,7 +15,7 @@ const Navbar = () => {
   const mutationObserverRef = useRef(null);
   const observedSectionsRef = useRef(new Set());
 
-  const SECTION_IDS = ['home', 'about', 'pricing', 'contact'];
+  const SECTION_IDS = ['home', 'about', 'portfolio', 'pricing', 'contact'];
 
   // Function to observe a section if not already observed
   const observeSection = (id) => {
@@ -38,8 +38,9 @@ const Navbar = () => {
     sectionObserverRef.current = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          setActiveLink(entry.target.id);
-          window.history.replaceState(null, '', `#${entry.target.id}`);
+          const matchedId = entry.target.id === 'pricing' ? 'portfolio' : entry.target.id;
+          setActiveLink(matchedId);
+          window.history.replaceState(null, '', `#${matchedId}`);
         }
       });
     }, {
@@ -110,11 +111,12 @@ const Navbar = () => {
     setActiveLink(linkName);
     setIsMenuOpen(false);
 
-    const element = document.getElementById(linkName);
+    let targetId = linkName;
+    if (linkName === 'pricing') targetId = 'portfolio';
+    let element = document.getElementById(targetId) || document.getElementById(linkName) || document.getElementById('portfolio') || document.getElementById('pricing');
+
     if (element) {
-      const navbarHeight = navbarRef.current ? navbarRef.current.offsetHeight : 70;
-      const elementTop = element.getBoundingClientRect().top + window.pageYOffset - navbarHeight - 10;
-      window.scrollTo({ top: elementTop, behavior: 'smooth' });
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
       window.history.pushState(null, '', `#${linkName}`);
     }
   };
@@ -175,9 +177,9 @@ const Navbar = () => {
             </li>
             <li>
               <a 
-                href="#pricing" 
-                className={`nav-link ${activeLink === 'pricing' ? 'active' : ''}`}
-                onClick={(e) => handleLinkClick(e, 'pricing')}
+                href="#portfolio" 
+                className={`nav-link ${activeLink === 'portfolio' || activeLink === 'pricing' ? 'active' : ''}`}
+                onClick={(e) => handleLinkClick(e, 'portfolio')}
               >
                 Portfolio
               </a>

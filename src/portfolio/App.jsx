@@ -233,7 +233,9 @@ const Portfolio = () => {
               initial="hidden"
               animate="visible"
             >
-              <FaGlobe className="globe-iconnn" />
+              <span className="globe-icon-wrapper">
+                <FaGlobe className="globe-iconnn" />
+              </span>
               {showText && (
                 <Typewriter 
                   text="zlolcoding.vercel.app" 
