@@ -212,7 +212,7 @@ function About() {
                 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <a href="#" className="cv-link">Download CV</a>
+                <a href="/Ali-Mohamed-Ali-Khaleel-CV.pdf" download="Ali-Mohamed-Ali-Khaleel-CV.pdf" className="cv-link">Download CV</a>
               </motion.div>
               <motion.div
                 className="view-btn"
